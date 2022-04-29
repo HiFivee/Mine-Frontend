@@ -41,23 +41,3 @@ function Register() {
 }
 
 export default Register;
-
-/*
-fetch('https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io', {
-            
-        method : "POST",
-        body : JSON.stringify({
-            username : id,
-            password : pwd,
-            name : name,
-        }),
-        headers : {
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json'
-        }
-    })
-    .then(res => res.json())
-    .then(res => {
-        console.log(res)
-    })
-*/

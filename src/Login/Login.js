@@ -37,7 +37,7 @@ function Login() {
             <div>
             <input type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
             <br/>
-            <input type="password" placeholder="password" value={email} onChange={(e)=>setPassword(e.target.value)} />
+            <input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
             <br/>
             <button>Login</button>
             <br/>
