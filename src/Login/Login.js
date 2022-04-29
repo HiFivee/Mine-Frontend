@@ -40,6 +40,8 @@ function Login() {
             <input type="password" placeholder="password" value={email} onChange={(e)=>setPassword(e.target.value)} />
             <br/>
             <button>Login</button>
+            <br/>
+            <button onClick = {() => history(-1)}>Back</button>
             </div>
         </div>
     )

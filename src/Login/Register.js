@@ -34,6 +34,8 @@ function Register() {
             <input type = "password" placeholder="password" value = {password} onChange = {(e) => setPassword(e.target.value)} />
             <br />
             <button>Sign Up</button>
+            <br/>
+            <button onClick = {() => history(-1)}>Back</button>
         </div>
     )
 }
