@@ -5,12 +5,10 @@ function Header()
 {
     return (
         <div>
-            <Navbar bg = "dark"variant = "dark">
+            <Navbar bg = "dark" variant = "dark">
             <Navbar.Brand href = "#home" > Home </Navbar.Brand>
-            <Nav>
-                <br/>
+            <Nav className = "NavStyles">
                 <Link to = "/login"> Login </Link>
-                <br/>
                 <Link to = "/register"> SignUp </Link>
             </Nav>
             <Nav>

@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.NavStyles a {
+  padding-left: 30px;
+}

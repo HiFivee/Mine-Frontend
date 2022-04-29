@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from './Header/Header';
 import Login from './Login/Login';
 import Register from './Login/Register';
+import styles from './App.css';
 
 function App() {
   return (
