@@ -12,7 +12,7 @@ function Register() {
         let item = {email, password};
         console.warn(item);
 
-        let result = await fetch ("http://localhost:8080/api/account", {
+        let result = await fetch ("https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account", {
             method : 'POST',
             body : JSON.stringify(item),
             headers : {
@@ -20,7 +20,7 @@ function Register() {
                 "Accept" : 'application/json'
             },
         });
-
+        
         result = await result.json();
         localStorage.setItem("user-info",JSON.stringify(result));
         history.push("/add");
@@ -33,7 +33,7 @@ function Register() {
             <br />
             <input type = "password" placeholder="password" value = {password} onChange = {(e) => setPassword(e.target.value)} />
             <br />
-            <button>Sign Up</button>
+            <button onClick = {() => signUp()}>Sign Up</button>
             <br/>
             <button onClick = {() => history(-1)}>Back</button>
         </div>
