@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 function Login() {
     const [email,setEmail]=useState("");
@@ -28,6 +29,7 @@ function Login() {
 
         result = await result.json()
         localStorage.setItem("user-info",JSON.stringify(result));
+        
         history.push("/add");
     }
 

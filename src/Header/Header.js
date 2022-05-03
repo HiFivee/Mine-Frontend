@@ -11,6 +11,8 @@ function Header()
                 <Link to = "/login"> Login </Link>
                 <Link to = "/accountCreate"> SignUp </Link>
                 <Link to = "/accountFetch"> Mypage </Link>
+                <Link to = "/projectFetch"> Projects </Link>
+                <Link to = "/secondProject"> SecondProject </Link>
             </Nav>
             <Nav>
                 <NavDropdown title="user name">
