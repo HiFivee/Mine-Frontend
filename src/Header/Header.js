@@ -9,7 +9,8 @@ function Header()
             <Navbar.Brand href = "#home" > Home </Navbar.Brand>
             <Nav className = "NavStyles">
                 <Link to = "/login"> Login </Link>
-                <Link to = "/register"> SignUp </Link>
+                <Link to = "/accountCreate"> SignUp </Link>
+                <Link to = "/accountFetch"> Mypage </Link>
             </Nav>
             <Nav>
                 <NavDropdown title="user name">

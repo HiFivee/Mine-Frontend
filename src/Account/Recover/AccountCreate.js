@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Register() {
+function AccountCreate() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ function Register() {
         });
         
         result = await result.json();
-        localStorage.setItem("user-info",JSON.stringify(result));
+        localStorage.setItem("create-user-info",JSON.stringify(result));
         history.push("/add");
     }
 
@@ -40,4 +40,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default AccountCreate;

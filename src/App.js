@@ -1,7 +1,8 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from './Header/Header';
-import Login from './Login/Login';
-import Register from './Login/Register';
+import Login from './Account/Auth/Login';
+import AccountCreate from './Account/Recover/AccountCreate';
+import AccountFetch from './Account/Recover/AccountFetch';
 import styles from './App.css';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         <Routes>
           <Route path = "/" element = {<Header />}/>
           <Route path = "/login" element = {<Login />} />
-          <Route path = "/register" element = {<Register />} />
+          <Route path = "/accountCreate" element = {<AccountCreate />} />
+          <Route path = "/accountFetch" element = {<AccountFetch />} />
         </Routes>
       </BrowserRouter> 
     </div>
