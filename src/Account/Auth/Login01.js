@@ -52,44 +52,21 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let accessToken;
-        let roles;
-
         try {
-
-            let item = {email, pwd};
-            console.warn(item);
-
-            const response = await fetch ("https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/auth/login", {
-                method : 'POST',
-                body : JSON.stringify(item),
-                headers : {
-                    "Content-Type" : 'application/json',
-                    "Accept" : 'application/json'
-                },
-            })
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .then(res => {
-                if (res.token) {
-                    localStorage.setItem('access-token', res.access_token);
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ email, pwd }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
                 }
-            });
-
-            // const response = await axios.post(LOGIN_URL,
-            //     JSON.stringify({ email, pwd }),
-            //     {
-            //         headers: { 'Content-Type': 'application/json' },
-            //         withCredentials: true
-            //     }
-            // );
+            );
 
             // 나중에 삭제!
-            // console.log(JSON.stringify(response?.data));
+            console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
 
-            // const accessToken = response?.data?.accessToken;
-            // const roles = response?.data?.roles;
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
             
             setAuth({ email, pwd, roles, accessToken });
             setEmail('');
@@ -152,6 +129,3 @@ const Login = () => {
 }
 
 export default Login
-
-
-//https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn/related
