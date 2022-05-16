@@ -27,7 +27,7 @@ const Login = () => {
     // }
     // 이렇게 생겨먹은 아이라서 아래처럼 사용
 
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/home";
     // 여기 사용된 ?. 는 'Optional Chaining'
     // ?. 앞의 평가 대상이 undefined 나 null이면 undefined 반환
     // https://ko.javascript.info/optional-chaining
@@ -56,8 +56,10 @@ const Login = () => {
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ email, pwd }),
                 {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: false
                 }
             );
 
@@ -68,14 +70,15 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             
-            setAuth({ email, pwd, roles, accessToken });
+            //setAuth({ email, pwd, roles, accessToken });
             setEmail('');
             setPwd('');
 
             navigate(from, { replace: true });
 
         } catch (err) {
-            if (!err?.response) {
+            console.log(err);
+            if (err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 400) {
                 setErrMsg('Missing Username or Password');

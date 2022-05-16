@@ -20,7 +20,8 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const TEL_REGEX = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/;
 const URL_REGEX = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
-const REGISTER_URL = 'https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account';
+//const REGISTER_URL = 'https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account';
+const REGISTER_URL = '/api/account';
 
 const AccountCreate = () => {
     const userRef = useRef();
@@ -121,7 +122,7 @@ const AccountCreate = () => {
                 JSON.stringify({ user, email, tel, pwd, git}),
                 {
                     headers: { 'Content-Type': 'application/json'},
-                    withCredentials: true
+                    withCredentials: false
                 }
             );
 
@@ -160,7 +161,7 @@ const AccountCreate = () => {
                 <section>
                     <h1>성공!</h1>
                     <p>
-                        <a href="#">로그인 (Sign In)</a>
+                        <a href="/Login">로그인 (Sign In)</a>
                     </p>
                 </section>
             ) : (
