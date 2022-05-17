@@ -9,11 +9,16 @@ function Header()
             <Navbar.Brand href = "/" > Home </Navbar.Brand>
             <Nav className = "NavStyles">
                 <Link to = "/Login"> Login </Link>
+                <br/>
                 <Link to = "/AccountCreate"> SignUp </Link>
+                <br/>
                 <Link to = "/Category" > Category </Link>
-                {/* <Link to = "/accountFetch"> Mypage </Link>
-                <Link to = "/projectFetch"> Projects </Link>
-                <Link to = "/secondProject"> SecondProject </Link> */}
+                <br/>
+                <Link to = "/ProjectFetch"> Projects </Link>
+                <br/>
+                <Link to = "/SecondProject"> SecondProject </Link>
+                <br/>
+                <Link to = "/ThirdProject">ThirdProject</Link>
             </Nav>
             {/* <Nav>
                 <NavDropdown title="user name">

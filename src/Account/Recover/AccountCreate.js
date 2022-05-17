@@ -13,14 +13,14 @@ axios.defaults.withCredentials = true;
 
 // username, pwd 정규 표현식. regular expression
 // https://blog.jaeyoon.io/2017/10/js-regex.html
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const USER_REGEX = /^[ㄱ-ㅎ|가-힣|A-z][ㄱ-ㅎ|가-힣|A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 // /(?=.*\d)(?=.*[a-z]).{8,}/;
 const TEL_REGEX = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/;
 const URL_REGEX = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
-const REGISTER_URL = 'api/account';
+const REGISTER_URL = 'https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account';
 
 const AccountCreate = () => {
     const userRef = useRef();
@@ -113,36 +113,21 @@ const AccountCreate = () => {
             // 조건 안에 들어 있는 값들이 채워지지 않을 경우.
             // git은 필수요소가 아니므로, 일단 제외
 
-            setErrMsg("전부 입력하라구 닝겐. Invalid Entry"); // 출력
+            setErrMsg("잘못된 접근입니다. Invalid Entry"); // 출력
             return;
         }
         try {
-
-            let item = {user, email, tel, pwd, git};
-            console.warn(item);
-
-            const response = await fetch ("https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account", {
-                method : 'POST',
-                body : JSON.stringify(item),
-                headers : {
-                    "Content-Type" : 'application/json',
-                    "Accept" : 'application/json'
-                },
-            })
-            .then(res => res.json())
-            .then(res => console.log(res));
-            
-            // const response = await axios.post(REGISTER_URL,
-            //     JSON.stringify({ user, email, tel, pwd, git}),
-            //     {
-            //         headers: { 'Content-Type': 'application/json'},
-            //         withCredentials: true
-            //     }
-            // );
+            const response = await axios.post(REGISTER_URL,
+                JSON.stringify({ user, email, tel, pwd, git}),
+                {
+                    headers: { 'Content-Type': 'application/json'},
+                    withCredentials: false
+                }
+            );
 
             // console.log 부분은 확인용이므로, 나중에 삭제해주기! 
-            // console.log(JSON.stringify(response?.data));
-            // console.log(JSON.stringify(response))
+            console.log(JSON.stringify(response?.data));
+            //console.log(JSON.stringify(response))
 
             //데이터는 response.data 안에 들어 있음!
 
@@ -175,8 +160,7 @@ const AccountCreate = () => {
                 <section>
                     <h1>성공!</h1>
                     <p>
-                    <Link to="/Login">로그인 (Sign In)</Link>
-                    {/* <a href="#">로그인 (Sign In)</a> */}
+                        <Link to="/Login">로그인 (Sign In)</Link>
                     </p>
                 </section>
             ) : (
@@ -339,7 +323,7 @@ const AccountCreate = () => {
     )
 }
 
-export default AccountCreate;
+export default AccountCreate
 
 //aria : WAI-ARIA 로, 동적 환경에서 수준 높은 UX를 제공하는 웹 애플리케이션
 // https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA/ARIA_Live_Regions

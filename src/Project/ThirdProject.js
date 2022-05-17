@@ -12,11 +12,17 @@ const ThirdProject = () => {
 
   // 서버에서 아이템을 가지고 오는 함수
   const getItems = useCallback(async () => {
-    setLoading(true)
-    await axios.get(`/page=${page}`).then((res) => {
+    setLoading(true);
+
+    axios.get(`/api/recruit`, 
+              {withCredentials : false})
+    .then((res) => {
       setItems(prevState => [...prevState, res])
+      
+      console.log(res);
     })
-    setLoading(false)
+
+    setLoading(false);
   }, [page])
 
   // `getItems` 가 바뀔 때 마다 함수 실행

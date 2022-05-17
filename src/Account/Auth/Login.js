@@ -3,6 +3,8 @@ import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../../api/axios';
+import { setCookie, getCookie } from '../../api/cookie';
+import Cookies from 'universal-cookie';
 
 const LOGIN_URL = '/api/auth/login';
 
@@ -52,46 +54,28 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let accessToken;
-        let roles;
-
         try {
-
-            let item = {email, pwd};
-            console.warn(item);
-
-            const response = await fetch ("https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/auth/login", {
-                method : 'POST',
-                body : JSON.stringify(item),
-                headers : {
-                    "Content-Type" : 'application/json',
-                    "Accept" : 'application/json'
-                },
-            })
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .then(res => {
-                if (res.token) {
-                    localStorage.setItem('access-token', res.access_token);
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ email, pwd }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: false
                 }
-            });
+            );
 
-            // const response = await axios.post(LOGIN_URL,
-            //     JSON.stringify({ email, pwd }),
-            //     {
-            //         headers: { 'Content-Type': 'application/json' },
-            //         withCredentials: true
-            //     }
-            // );
+            if(response) {
+                setCookie(email,response);
+                getCookie(email);
+            }
 
-            // 나중에 삭제!
-            // console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response));
+            console.log(JSON.stringify(response?.data));
+            console.log(Cookies);
 
+            // refreshToken 사용할 경우
             // const accessToken = response?.data?.accessToken;
             // const roles = response?.data?.roles;
             
-            setAuth({ email, pwd, roles, accessToken });
+            // setAuth({ email, pwd, roles, accessToken });
             setEmail('');
             setPwd('');
 
@@ -151,7 +135,4 @@ const Login = () => {
     )
 }
 
-export default Login
-
-
-//https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn/related
+export default Login;
