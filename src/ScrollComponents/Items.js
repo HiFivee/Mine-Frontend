@@ -12,7 +12,6 @@ const ItemWrap = styled.div`
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 6px;
   }
-
   .ItemWrap-Top {
     display: flex;
     width: 350px;
@@ -26,14 +25,12 @@ const ItemWrap = styled.div`
     text-align: center;
     align-items: center;
   }
-
   .ItemWrap-Body {
     height: 200px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     padding: 10px;
   }
-
   .ItemWrap-Body-Title {
     width: 300px;
     height: 36px;

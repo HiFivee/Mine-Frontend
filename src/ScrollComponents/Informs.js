@@ -35,15 +35,3 @@ Informs.propTypes = {
 };
 
 export default Informs;
-
-/*
-    email : PropTypes.string.isRequired,
-    nickname : PropTypes.string.isRequired,
-    phone : PropTypes.number.isRequired,
-    address : PropTypes.string.isRequired,
-    position : PropTypes.string.isRequired,
-    link : PropTypes.string.isRequired,
-    message : PropTypes.string.isRequired,
-    techStack : PropTypes.string.isRequired,
-    experience : PropTypes.string.isRequired,
-*/

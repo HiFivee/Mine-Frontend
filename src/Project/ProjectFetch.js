@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import Item from "../component/Item";
-import Loader from "../component/Loader";
+import Item from "../ScrollComponents/Items";
+import Loader from "../ScrollComponents/Loader";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     margin: 0px;
   }
-
   body {
     background-color: #f2f5f7;
   }
@@ -23,7 +22,6 @@ const AppWrap = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-
   .Target-Element {
     width: 100vw;
     height: 140px;
@@ -46,7 +44,7 @@ const ProjectFetch = () => {
   const getMoreItem = async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 리크루트 단위 배열 
     setItemLists((itemLists) => itemLists.concat(Items));
     setIsLoaded(false);
   };

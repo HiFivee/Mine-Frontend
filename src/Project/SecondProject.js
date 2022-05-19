@@ -2,8 +2,8 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { memo, useCallback, useEffect, useState } from "react";
 import { LeftArrow, RightArrow } from "react-arrows";
 import styled, { createGlobalStyle } from "styled-components";
-import Item from "../component/Item";
-import Loader from "../component/Loader";
+import Item from "../ScrollComponents/Items"
+import Loader from "../ScrollComponents/Loader";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -11,7 +11,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     margin: 0px;
   }
-
   body {
     background-color: #f2f5f7;
   }
@@ -25,7 +24,6 @@ const AppWrap = styled.div`
   justify-content: left;
   text-align: center;
   align-items: left;
-
   .Target-Element {
     width: 100vw;
     height: 140px;

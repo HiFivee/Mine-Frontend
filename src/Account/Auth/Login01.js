@@ -3,8 +3,6 @@ import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../../api/axios';
-import { setCookie, getCookie } from '../../api/cookie';
-import Cookies from 'universal-cookie';
 
 const LOGIN_URL = '/api/auth/login';
 
@@ -29,7 +27,7 @@ const Login = () => {
     // }
     // 이렇게 생겨먹은 아이라서 아래처럼 사용
 
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/home";
     // 여기 사용된 ?. 는 'Optional Chaining'
     // ?. 앞의 평가 대상이 undefined 나 null이면 undefined 반환
     // https://ko.javascript.info/optional-chaining
@@ -58,31 +56,29 @@ const Login = () => {
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ email, pwd }),
                 {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
                     withCredentials: false
                 }
             );
 
-            if(response) {
-                setCookie(email,response);
-                getCookie(email);
-            }
-
+            // 나중에 삭제!
             console.log(JSON.stringify(response?.data));
-            console.log(Cookies);
+            //console.log(JSON.stringify(response));
 
-            // refreshToken 사용할 경우
-            // const accessToken = response?.data?.accessToken;
-            // const roles = response?.data?.roles;
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
             
-            // setAuth({ email, pwd, roles, accessToken });
+            //setAuth({ email, pwd, roles, accessToken });
             setEmail('');
             setPwd('');
 
             navigate(from, { replace: true });
 
         } catch (err) {
-            if (!err?.response) {
+            console.log(err);
+            if (err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 400) {
                 setErrMsg('Missing Username or Password');
@@ -135,4 +131,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Login
