@@ -1,21 +1,22 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
+import { removeCookie, RemoveCookie } from "../api/cookie";
 
 // 로그인 성공하면 뜨는 홈페이지
 
 const Home = () => {
     const { setAuth } = useContext(AuthContext);
-    const navigate = useNavigate();
+    //const navigate = useNavigate()
 
     const logout = async () => {
         // if used in more components, this should be in context 
         // axios to /logout endpoint 
         setAuth({});
+        removeCookie();
 
         //removeCookie(accessToken);
         //navigate('/linkpage');
-
     }
 
     return (
@@ -31,7 +32,7 @@ const Home = () => {
             <br />
             <Link to="/lounge">Go to the Lounge</Link> */}
             <br />
-            <Link to = "/AccountFetch"> Mypage </Link>
+            <Link to = "/AccountFetch" > Mypage </Link>
             <Link to="/linkpage">Go to the link page</Link>
             <div className="flexGrow">
                 <button onClick={logout}>Sign Out

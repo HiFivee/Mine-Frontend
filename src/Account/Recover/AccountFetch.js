@@ -1,19 +1,35 @@
 import {useState, useEffect} from "react";
-import Informs from "../../component/Informs.js";
+import axios, { axiosPrivate } from "../../api/axios";
 
 function AccountFetch() {
     const [loading, setLoading] = useState(true);
     const [informs, setInforms] = useState([]);
 
+    const INFORM_URL = '/api/account';
+
     async function Profile()
     {
-        let json = await(
-            await fetch ("https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account"
-            )
-        ).json();
+      try{
+        const response = await axios.get(INFORM_URL)
+        const userID = response.data.email; // userID
 
-        setInforms(json.email);
-        setLoading(false);
+        const response2 = await axios.get(INFORM_URL+userID);
+        console.log(response2.data)
+      } catch (err) {
+        console.log(err);
+      }
+        
+        // const response = await axios.get(INFORM_URL,
+        //   JSON.stringify(),
+        //   {
+        //       headers: { 'Content-Type': 'application/json'},
+        //       withCredentials: false,
+        //   });
+
+        // console.log(JSON.stringify(response?.data));
+
+        // setInforms(response);
+        // setLoading(false);
     };
 
     console.log(informs);
@@ -29,7 +45,7 @@ function AccountFetch() {
           ) : (
             <div>
               {informs && informs.map(inform => (
-                <Informs
+                <div
                   key = {inform.email}
                   email = {inform.email}
                   nickname = {inform.nickname} 

@@ -4,7 +4,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../../api/axios';
 import { setCookie, getCookie } from '../../api/cookie';
-import Cookies from 'universal-cookie';
 
 const LOGIN_URL = '/api/auth/login';
 
@@ -42,6 +41,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -69,17 +69,18 @@ const Login = () => {
             }
 
             console.log(JSON.stringify(response?.data));
-            console.log(Cookies);
 
             // refreshToken 사용할 경우
-            // const accessToken = response?.data?.accessToken;
-            // const roles = response?.data?.roles;
+            //const accessToken = response?.data?.accessToken;
+            ///const roles = response?.data?.roles;
             
-            // setAuth({ email, pwd, roles, accessToken });
+            setSuccess(true);
+
+            setAuth({ email, pwd });
             setEmail('');
             setPwd('');
 
-            navigate(from, { replace: true });
+            //navigate( from, { replace: true });
 
         } catch (err) {
             if (!err?.response) {
@@ -96,41 +97,50 @@ const Login = () => {
     }
 
     return (
+        <>
+            {success ? (
+                <section>
+                    <p>
+                        <Link to = "/Home"> Home </Link>
+                    </p>
+                </section>
+            ) : (
+                <section>
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h1>로그인(Sign In)</h1>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="Email">E-mail:</label>
+                        <input
+                            type="email"
+                            id="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                            placeholder='abc@google.com'
+                        />
 
-        <section>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>로그인(Sign In)</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="Email">E-mail:</label>
-                <input
-                    type="email"
-                    id="username"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    required
-                    placeholder='abc@google.com'
-                />
-
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
-                    required
-                />
-                <button>Sign In</button>
-            </form>
-            <p>
-                계정이 필요하신가요?<br/>
-                {/* (Need an Account?)<br /> */}
-                <span className="line">
-                    <Link to="/AccountCreate">Sign Up</Link>
-                </span>
-            </p>
-        </section>
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                        />
+                        <button>Sign In</button>
+                    </form>
+                    <p>
+                        계정이 필요하신가요?<br/>
+                        {/* (Need an Account?)<br /> */}
+                        <span className="line">
+                            <Link to="/AccountCreate">Sign Up</Link>
+                        </span>
+                    </p>
+                </section>
+            )}
+        </>
 
     )
 }

@@ -7,6 +7,7 @@ import Home from './component/Home'
 import ThirdProject from './Project/ThirdProject';
 import ProjectFetch from './Project/ProjectFetch';
 import SecondProject from './Project/SecondProject';
+import AccountFetch from './Account/Recover/AccountFetch';
 
 function App() {
   return (
@@ -17,11 +18,11 @@ function App() {
           <Route path = "/Login" element = {<Login />} />
           <Route path = "/AccountCreate" element = {<AccountCreate />} />
           <Route path = "/Category" element = {<Category />} />
-          {/* <Route path = "/accountFetch" element = {<AccountFetch />} /> */}
+          <Route path = "/AccountFetch" element = {<AccountFetch />} />
           <Route path = "/ProjectFetch" element = {<ProjectFetch />} />
           <Route path = "/SecondProject" element = {<SecondProject />} />
           <Route path = "/ThirdProject" element = {<ThirdProject /> } />
-          <Route path = "/home" element = {<Home />} />
+          <Route path = "/Home" element = {<Home />} />
         </Routes>
       </BrowserRouter> 
     </div>
