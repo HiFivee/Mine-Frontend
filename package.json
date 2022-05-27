@@ -2,7 +2,6 @@
   "name": "mine-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
@@ -14,6 +13,7 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.27.2",
     "http-proxy-middleware": "^2.0.6",
+    "js-cookie": "^3.0.1",
     "react": "^18.0.0",
     "react-arrows": "^1.2.0",
     "react-bootstrap": "^2.3.1",
