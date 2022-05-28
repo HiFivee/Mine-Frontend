@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import axios, { axiosPrivate } from "../../api/axios";
+import axios, { axiosPrivate } from '../../utils/api/axios';
 
 function AccountFetch() {
     const [loading, setLoading] = useState(true);
