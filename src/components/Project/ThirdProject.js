@@ -1,7 +1,7 @@
 // App.js
 import React, { useState, useEffect, useCallback } from "react";
 import { useInView } from "react-intersection-observer";
-import axios from "../api/axios";
+import axios from "../../utils/api/axios";
 
 const ThirdProject = () => {
   const [items, setItems] = useState([]);

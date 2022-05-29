@@ -1,13 +1,13 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Header from './Header/Header';
-import Login from './Account/Auth/Login';
-import AccountCreate from './Account/Recover/AccountCreate';
-import Category from './component/Category';
-import Home from './component/Home'
-import ThirdProject from './Project/ThirdProject';
-import ProjectFetch from './Project/ProjectFetch';
-import SecondProject from './Project/SecondProject';
-import AccountFetch from './Account/Recover/AccountFetch';
+import Header from '../Header/Header';
+import Login from '../Auth/Login'
+import AccountCreate from '../Account/AccountCreate';
+import Category from '../../utils/temp/Category';
+import Home from '../../utils/temp/Home';
+import ThirdProject from '../Project/ThirdProject';
+import ProjectFetch from '../Project/ProjectFetch';
+import SecondProject from '../Project/SecondProject';
+import AccountFetch from '../Account/AccountFetch';
 
 function App() {
   return (

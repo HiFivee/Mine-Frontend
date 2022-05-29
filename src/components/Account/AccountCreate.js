@@ -6,21 +6,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // https://www.daleseo.com/react-font-awesome/ 참고
 // 패키지에서 제공하는 FontAwesomeIcon 컴포넌트에 icon prop으로 넘겨서 사용!
 
-import axios from '../../api/axios';
+import axios from '../../utils/api/axios';
 import { Link } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
 // username, pwd 정규 표현식. regular expression
 // https://blog.jaeyoon.io/2017/10/js-regex.html
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const USER_REGEX = /^[ㄱ-ㅎ|가-힣|A-z][ㄱ-ㅎ|가-힣|A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 // /(?=.*\d)(?=.*[a-z]).{8,}/;
 const TEL_REGEX = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/;
 const URL_REGEX = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
-//const REGISTER_URL = 'https://0bfabe7c-c087-4dcb-bf72-9ab5e3650b87.mock.pstmn.io/api/account';
 const REGISTER_URL = '/api/account';
 
 const AccountCreate = () => {
@@ -161,16 +160,17 @@ const AccountCreate = () => {
                 <section>
                     <h1>성공!</h1>
                     <p>
-                        <a href="/Login">로그인 (Sign In)</a>
+                        <Link to="/Login">로그인 (Sign In)</Link>
                     </p>
                 </section>
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>회원가입 (Register)</h1>
+                    <p> * 는 필수 영역입니다. </p>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">
-                            이름 (Username):
+                            * 이름 (Username):
                             <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
                         </label>
@@ -195,7 +195,7 @@ const AccountCreate = () => {
                         </p>
 
                         <label htmlFor="email">
-                            E-mail:
+                            * E-mail:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                         </label>
@@ -218,7 +218,7 @@ const AccountCreate = () => {
                         </p>
 
                         <label htmlFor="tel">
-                            휴대폰 번호 (Telephone):
+                            * 휴대폰 번호 (Telephone):
                             <FontAwesomeIcon icon={faCheck} className={validTel ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validTel || !tel ? "hide" : "invalid"} />
                         </label>
@@ -241,7 +241,7 @@ const AccountCreate = () => {
                         </p>
 
                         <label htmlFor="password">
-                            비밀번호 (Password):
+                            * 비밀번호 (Password):
                             <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
                         </label>
@@ -265,7 +265,7 @@ const AccountCreate = () => {
 
 
                         <label htmlFor="confirm_pwd">
-                            비밀번호 확인 (Confirm Password):
+                            * 비밀번호 확인 (Confirm Password):
                             <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
                         </label>

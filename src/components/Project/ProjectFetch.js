@@ -1,9 +1,7 @@
-import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { memo, useCallback, useEffect, useState } from "react";
-import { LeftArrow, RightArrow } from "react-arrows";
 import styled, { createGlobalStyle } from "styled-components";
-import Item from "../ScrollComponents/Items"
-import Loader from "../ScrollComponents/Loader";
+import Item from "../../utils/ScrollComponents/Items";
+import Loader from "../../utils/ScrollComponents/Loader";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -21,20 +19,20 @@ const AppWrap = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
   text-align: center;
-  align-items: left;
+  align-items: center;
   .Target-Element {
     width: 100vw;
     height: 140px;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     text-align: center;
-    align-items: left;
+    align-items: center;
   }
 `;
 
-const SecondProject = () => {
+const ProjectFetch = () => {
   const [target, setTarget] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [itemLists, setItemLists] = useState([1]);
@@ -46,7 +44,7 @@ const SecondProject = () => {
   const getMoreItem = async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 리크루트 단위 배열 
     setItemLists((itemLists) => itemLists.concat(Items));
     setIsLoaded(false);
   };
@@ -63,7 +61,7 @@ const SecondProject = () => {
     let observer;
     if (target) {
       observer = new IntersectionObserver(onIntersect, {
-        threshold: 0,
+        threshold: 0.4,
       });
       observer.observe(target);
     }
@@ -74,17 +72,15 @@ const SecondProject = () => {
     <>
       <GlobalStyle />
       <AppWrap>
-        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-          {itemLists.map((v, i) => {
-            return <Item number={i + 1} key={i} />;
-          })}
-          <div ref={setTarget} className="Target-Element">
-            {isLoaded && <Loader />}
-          </div>
-        </ScrollMenu>
+        {itemLists.map((v, i) => {
+          return <Item number={i + 1} key={i} />;
+        })}
+        <div ref={setTarget} className="Target-Element">
+          {isLoaded && <Loader />}
+        </div>
       </AppWrap>
     </>
   );
 };
 
-export default memo(SecondProject);
+export default memo(ProjectFetch);

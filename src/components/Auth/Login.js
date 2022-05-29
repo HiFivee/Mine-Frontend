@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../utils/hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-import axios from '../../api/axios';
-import { setCookie, getCookie } from '../../api/cookie';
+import axios from '../../utils/api/axios';
+import { setCookie, getCookie } from '../../utils/api/cookie';
 
 const LOGIN_URL = '/api/auth/login';
 
@@ -72,11 +72,7 @@ const Login = () => {
                 getCookie('token');
             }
 
-<<<<<<< Updated upstream
-            console.log(JSON.stringify(response?.data));
-=======
             console.log(JSON.stringify(response.data.token));
->>>>>>> Stashed changes
 
             // refreshToken 사용할 경우
             //const accessToken = response?.data?.accessToken;
@@ -84,11 +80,7 @@ const Login = () => {
             
             setSuccess(true);
 
-<<<<<<< Updated upstream
-            setAuth({ email, pwd });
-=======
             // setAuth({ email, pwd });
->>>>>>> Stashed changes
             setEmail('');
             setPwd('');
 
