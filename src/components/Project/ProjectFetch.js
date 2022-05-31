@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import Item from "../../utils/ScrollComponents/Items";
-import Loader from "../../utils/ScrollComponents/Loader";
+import Item from "../../utils/scrollComponents/Items";
+import Loader from "../../utils/scrollComponents/Loader";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {

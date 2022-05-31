@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useAuth from '../../utils/hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -78,13 +78,14 @@ const Login = () => {
             //const accessToken = response?.data?.accessToken;
             ///const roles = response?.data?.roles;
             
-            setSuccess(true);
+            //setSuccess(true);
 
             // setAuth({ email, pwd });
             setEmail('');
             setPwd('');
 
             //navigate( from, { replace: true });
+            navigate("/main");
 
         } catch (err) {
             if (!err?.response) {
@@ -101,50 +102,40 @@ const Login = () => {
     }
 
     return (
-        <>
-            {success ? (
-                <section>
-                    <p>
-                        <Link to = "/Home"> Home </Link>
-                    </p>
-                </section>
-            ) : (
-                <section>
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>로그인(Sign In)</h1>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="Email">E-mail:</label>
-                        <input
-                            type="email"
-                            id="username"
-                            ref={userRef}
-                            autoComplete="off"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            required
-                            placeholder='abc@google.com'
-                        />
+        <section>
+        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        <h1>로그인(Sign In)</h1>
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="Email">E-mail:</label>
+            <input
+                type="email"
+                id="username"
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+                placeholder='abc@google.com'
+            />
 
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                        />
-                        <button>Sign In</button>
-                    </form>
-                    <p>
-                        계정이 필요하신가요?<br/>
-                        {/* (Need an Account?)<br /> */}
-                        <span className="line">
-                            <Link to="/AccountCreate">Sign Up</Link>
-                        </span>
-                    </p>
-                </section>
-            )}
-        </>
+            <label htmlFor="password">Password:</label>
+            <input
+                type="password"
+                id="password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+            />
+            <button>Sign In</button>
+        </form>
+        <p>
+            계정이 필요하신가요?<br/>
+            {/* (Need an Account?)<br /> */}
+            <span className="line">
+                <Link to="/AccountCreate">Sign Up</Link>
+            </span>
+        </p>
+    </section>
 
     )
 }
