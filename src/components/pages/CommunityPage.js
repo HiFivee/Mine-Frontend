@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Footer from '../fixed/Footer';
 import Header from '../fixed/Header';
 
-function SignUpPage() {
+function CommunityPage() {
 
     useEffect(() => {
 
@@ -17,4 +17,4 @@ function SignUpPage() {
     );
   }
   
-  export default SignUpPage;
+  export default CommunityPage;

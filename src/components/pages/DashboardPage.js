@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../fixed/Footer';
-import Header from '../Fixed/Header';
+import Header from '../fixed/Header';
 
 function DashboardPage() {
 
@@ -9,10 +9,11 @@ function DashboardPage() {
       }, []);
 
     return (
-    <div className="dashboard-wrapper">
-      <Header></Header>
-      <Footer></Footer>
-    </div>
+      <div className="flex flex-col h-screen justify-between">
+        <Header className="h-10"></Header>
+        <div className="mb-auto h-10"></div>
+        <Footer className="h-10"></Footer>
+      </div>
     );
   }
   

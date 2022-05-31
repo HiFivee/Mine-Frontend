@@ -1,7 +1,24 @@
+import React, { useEffect } from 'react';
+
 function Footer() {
     return (
-        <footer className="footer">
-            <p>ⓒ 2022 HiFivee, All rights reserved.</p>
+        <footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://github.com/HiFivee" class="hover:underline">HiFivee</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#" class="mr-4 hover:underline md:mr-6 ">소개</a>
+                </li>
+                <li>
+                    <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="mr-4 hover:underline md:mr-6">이용약관</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">문의</a>
+                </li>
+            </ul>
         </footer>
     );
 }

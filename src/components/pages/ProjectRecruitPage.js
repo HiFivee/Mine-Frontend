@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import Footer from '../fixed/Footer';
+import Header from '../fixed/Header';
 
 function ProjectRecruitPage() {
 
@@ -7,10 +9,11 @@ function ProjectRecruitPage() {
       }, []);
 
     return (
-    <div className="project-recruit-wrapper">
-        <Header></Header>
-        <Footer></Footer>
-    </div>
+      <div className="flex flex-col h-screen justify-between">
+        <Header className="h-10"></Header>
+        <div className="mb-auto h-10"></div>
+        <Footer className="h-10"></Footer>
+      </div>
     );
   }
   
