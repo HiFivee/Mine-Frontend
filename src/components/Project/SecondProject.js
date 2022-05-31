@@ -2,8 +2,8 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { memo, useCallback, useEffect, useState } from "react";
 import { LeftArrow, RightArrow } from "react-arrows";
 import styled, { createGlobalStyle } from "styled-components";
-import Item from "../../utils/ScrollComponents/Items"
-import Loader from "../../utils/ScrollComponents/Loader";
+import Item from "../../utils/scrollComponents/Items"
+import Loader from "../../utils/scrollComponents/Loader";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
