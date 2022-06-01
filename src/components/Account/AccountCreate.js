@@ -11,8 +11,48 @@ import { Link } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 
-// username, pwd 정규 표현식. regular expression
-// https://blog.jaeyoon.io/2017/10/js-regex.html
+const ProductBar = styled.form`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+`;
+
+const ProductSearch = styled.select`
+  width: 92%;
+  height: 75%;
+  border: 1px solid #E5E6E6;
+  border-radius: 10px;
+  padding-left: 7px;
+`;
+
+const ShowingCode = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+`;
+
+const REG_LIST = [
+    { id: null, value: '거주 지역' },
+    { id: 0, value: '서울특별시' },
+    { id: 1, value: '부산광역시' },
+    { id: 2, value: '인천광역시' },
+    { id: 3, value: '대구광역시' },
+    { id: 4, value: '광주광역시' },
+    { id: 5, value: '대전광역시' },
+    { id: 6, value: '울산광역시' },
+    { id: 7, value: '경기도' },
+    { id: 8, value: '강원도' },
+    { id: 9, value: '충청북도' },
+    { id: 10, value: '충청남도' },
+    { id: 11, value: '경상북도' },
+    { id: 12, value: '경상남도' },
+    { id: 13, value: '전라북도' },
+    { id: 14, value: '전라남도' },
+    { id: 15, value: '제주도' },
+];
+
 const USER_REGEX = /^[ㄱ-ㅎ|가-힣|A-z][ㄱ-ㅎ|가-힣|A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -285,7 +325,26 @@ const AccountCreate = () => {
                             위에 입력한 비밀번호와 동일해야 합니다.
                         </p>
 
-                        <label htmlFor="url">
+                        <div className="mb-4"></div>  
+                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="region">
+                            * 거주 지역 (Region):
+                        </label>
+                        <ProductBar>
+                            <ProductSearch onChange={handleDropProduct} className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
+                            {REG_LIST.map(el => {
+                                return (
+                                <option defaultValue="123" key={el.id}>
+                                    {el.value}
+                                </option>
+                                );
+                            })}
+                            
+                            </ProductSearch>
+                        </ProductBar>
+                        <ShowingCode>{selectedDropValue}</ShowingCode>
+                        
+                        <div className="mb-4"></div>
+                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="url">
                             Github:
                             <FontAwesomeIcon icon={faCheck} className={validGit ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validGit || !git ? "hide" : "invalid"} />
