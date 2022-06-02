@@ -201,11 +201,10 @@ const AccountCreate = () => {
                     </div>
                     <form onSubmit={handleSubmit} className="mx-auto max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col lg">
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <div className="mb-4"></div>
-                        <p className="text-red text-xs italic">*는 필수 영역입니다.</p>
-                        <div className="mb-4" />
 
+                        <p className="text-red text-xs italic">*는 필수 영역입니다.</p>
                         <div className="mb-4"></div>
+                        
                         <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="username">
                             * 이름 (Username):
                             <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
