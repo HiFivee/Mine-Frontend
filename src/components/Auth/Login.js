@@ -85,7 +85,7 @@ const Login = () => {
             setPwd('');
 
             //navigate( from, { replace: true });
-            navigate("/main");
+            navigate("/");
 
         } catch (err) {
             if (!err?.response) {
@@ -103,41 +103,53 @@ const Login = () => {
 
     return (
         <section>
-        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-        <h1>로그인(Sign In)</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="Email">E-mail:</label>
-            <input
-                type="email"
-                id="username"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-                placeholder='abc@google.com'
-            />
-
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-            />
-            <button>Sign In</button>
-        </form>
-        <p>
-            계정이 필요하신가요?<br/>
-            {/* (Need an Account?)<br /> */}
-            <span className="line">
-                <Link to="/AccountCreate">Sign Up</Link>
-            </span>
-        </p>
-    </section>
-
-    )
+            <div className="sm:text-center lg:text-center">
+                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <span className="block xl:inline mb-10">로그인</span>
+                </h1>
+            </div>
+            <form onSubmit={handleSubmit} className="mx-auto max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col lg">
+                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                <div className="mb-4">
+                <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="username">
+                    E-mail
+                </label>
+                <input
+                    type="email"
+                    id="username"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                    placeholder='abc@google.com'            
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"></input>
+                </div>
+                <div className="mb-6">
+                <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="password">
+                    Password
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                    placeholder="******************"
+                    className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"></input>
+                <p className="text-red text-xs italic">Please choose a password.</p>
+                </div>
+                <div className="flex items-center justify-between">
+                <button className="bg-indigo-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
+                    로그인
+                </button>
+                <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
+                    비밀번호를 잊으셨나요?
+                </a>
+                </div>
+            </form>
+        </section>
+    );
 }
 
 export default Login;

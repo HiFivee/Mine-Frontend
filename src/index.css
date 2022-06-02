@@ -14,10 +14,9 @@
 html {
     font-family: 'Nunito', 'Gowun Dodum', sans-serif;
     font-size: 22px;
-    color: #fff;
 }
 
 body {
     min-height: 100vh;
-    background-color: rgb(170, 221, 255);
+    /* background-color: rgb(170, 221, 255); */
 }
