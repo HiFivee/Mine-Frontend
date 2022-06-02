@@ -65,6 +65,7 @@ const REG_LIST = [
 
 const PNAME_REGEX = /^[ㄱ-ㅎ|가-힣|A-z0-9-_]{4,23}$/;
 const PHC_REGEX = /^(?:[1-9]|0[1-9]|10)$/;
+// const PCTS_REGEX = 
 
 const REGISTER_URL = '/api/project';
 
