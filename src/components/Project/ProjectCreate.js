@@ -64,101 +64,109 @@ const REG_LIST = [
 ];
 
 const PNAME_REGEX = /^[ㄱ-ㅎ|가-힣|A-z0-9-_]{3,23}$/;
-const PHC_REGEX = /^[0-9]{0,9}$/;
+const PHC_REGEX = /^(?:[1-9]|0[1-9]|10)$/;
 
-const REGISTER_URL = '/api/account';
+const REGISTER_URL = '/api/project';
 
 const ProjectCreate = () => {
-    const ProjectCreate = () => {
-        const userRef = useRef();
-        const errRef = useRef();
+    const userRef = useRef();
+    const errRef = useRef();
+
+    // const [pid, setPid] = useState(0);
+    // setPid(1);
+    // console.log(pid);
+
+    const [pname, setPname] = useState('');
+    const [validPname, setValidPname] = useState(false);
+    const [pnameFocus, setPnameFocus] = useState(false);
+
+    const [phc, setPhc] = useState(0);
+    const [validPhc, setValidPhc] = useState(false);
+    const [phcFocus, setPhcFocus] = useState(false);
+
+    const [pfield, setPfield] = useState('');
+    const [validPfield, setValidPfield] = useState('');
+    const [selectedDropField, setSelectedDropField] = useState('');
     
-        const [pid, setPid] = useState(0);
-        setPid(1);
-        console.log(pid);
-    
-        const [pname, setPname] = useState('');
-        const [validPname, setValidPname] = useState(false);
-        const [PnameFocus, setPnameFocus] = useState(false);
-    
-        const [phc, setPhc] = useState(0);
-        const [validPhc, setValidPhc] = useState(false);
-        const [PhcFocus, setPhcFocus] = useState(false);
-    
-        const [pfield, setPfield] = useState('');
-        const [selectedDropField, setSelectedDropField] = useState('');
-        
-        const [preg, setPreg] = useState('');
-        const [selectedDropReg, setSelectedDropReg] = useState('');
-    
-        const [errMsg, setErrMsg] = useState('');
-        const [success, setSuccess] = useState(false);
-    
-        useEffect(() => {
-            userRef.current.focus();
-        }, [])
-    
-        useEffect(() => {
-            setValidPname(PNAME_REGEX.test(pname));
-        }, [pname])
-    
-        useEffect(() => {
-            setValidPhc(PHC_REGEX.test(phc));
-        }, [phc])
-    
-        useEffect(() => {
-            setErrMsg('');
-        }, [pname, phc ])
-    
-        const handleDropReg = e => {
-            const { value } = e.target;
-            setSelectedDropReg(REG_LIST.filter(el => el.value === value)[0].id);  
-        };
-    
-        const handleDropField = e => {
-            const { value } = e.target;
-            setSelectedDropField(FIELD_LIST.filter(el => el.value === value)[0].id);  
-        };
-    
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-    
-            const v1 = PNAME_REGEX.test(pname);
-            const v2 = PHC_REGEX.test(phc);
-    
-            if (!v1 || !v2) {
-    
-                setErrMsg("잘못된 접근입니다. Invalid Entry"); 
-                return;
-            }
-            try {
-                const response = await axios.post(REGISTER_URL,
-                    JSON.stringify({ pid, pname, phc, pfield, preg }),
-                    {
-                        headers: { 'Content-Type': 'application/json'},
-                        withCredentials: false
-                    }
-                );
-    
-                console.log(JSON.stringify(response?.data));
-    
-                setSuccess(true);
-                setPname('');
-                setPhc('');
-    
-    
-            } catch (err) {
-                if (!err?.response) { 
-                    setErrMsg('서버 응답 없음. No Server Response');
-                } else if (err.response?.status === 409) {
-                    setErrMsg('이미 있는 이름입니다. Project Name Taken');
-                } else {
-                    setErrMsg('프로젝트 생성 실패. Failed')
+    const [preg, setPreg] = useState('');
+    const [validPreg, setValidPreg] = useState('');
+    const [selectedDropReg, setSelectedDropReg] = useState('');
+
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setValidPname(PNAME_REGEX.test(pname));
+    }, [pname])
+
+    useEffect(() => {
+        setValidPhc(PHC_REGEX.test(phc));
+    }, [phc])
+
+    // useEffect(() => {
+    //     setValidPfield(PHC_REGEX.test(phc));
+    // }, [phc])
+
+    // useEffect(() => {
+    //     setValidPreg(PHC_REGEX.test(phc));
+    // }, [phc])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [pname, phc ])
+
+    const handleDropReg = e => {
+        const { value } = e.target;
+        setSelectedDropReg(REG_LIST.filter(el => el.value === value)[0].id);  
+    };
+
+    const handleDropField = e => {
+        const { value } = e.target;
+        setSelectedDropField(FIELD_LIST.filter(el => el.value === value)[0].id);  
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const v1 = PNAME_REGEX.test(pname);
+        const v2 = PHC_REGEX.test(phc);
+
+        if (!v1 || !v2) {
+
+            setErrMsg("잘못된 접근입니다. Invalid Entry"); 
+            return;
+        }
+        try {
+            const response = await axios.post(REGISTER_URL,
+                JSON.stringify({ pname, phc, pfield, preg }),
+                {
+                    headers: { 'Content-Type': 'application/json'},
+                    withCredentials: false
                 }
-                errRef.current.focus();
+            );
+
+            console.log(JSON.stringify(response?.data));
+
+            setSuccess(true);
+            setPname('');
+            setPhc('');
+
+        } catch (err) {
+            if (!err?.response) { 
+                setErrMsg('서버 응답 없음. No Server Response');
+            } else if (err.response?.status === 409) {
+                setErrMsg('이미 있는 이름입니다. Project Name Taken');
+            } else {
+                setErrMsg('프로젝트 생성 실패. Failed')
             }
+            errRef.current.focus();
         }
     }
+
 
     return (
         <>
@@ -174,145 +182,44 @@ const ProjectCreate = () => {
                     <div className="mb-10"></div>
                     <div className="sm:text-center lg:text-center">
                         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                        <span className="block xl:inline mb-10">프로젝스 생성</span>
+                        <span className="block xl:inline mb-10">프로젝트 생성</span>
                         </h1>
                     </div>
                     <form onSubmit={handleSubmit} className="mx-auto max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col lg">
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <div className="mb-4"></div>
-                        <div className="mb-4" />
 
                         <div className="mb-4"></div>
                         <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="username">
                             * 프로젝트명 :
-                            <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
+                            <FontAwesomeIcon icon={faCheck} className={validPname ? "valid" : "hide"} />
+                            <FontAwesomeIcon icon={faTimes} className={validPname || !pname ? "hide" : "invalid"} />
                         </label>
                         <input
                             type="text"
-                            id="username"
-                            ref={userRef}
+                            id="pname"
+                            ref={userRef} // 이거 없음 클나욤
                             autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
+                            onChange={(e) => setPname(e.target.value)}
+                            value={pname}
                             required
-                            aria-invalid={validName ? "false" : "true"}
+                            aria-invalid={validPname ? "false" : "true"}
                             aria-describedby="uidnote"
-                            onFocus={() => setUserFocus(true)}
-                            onBlur={() => setUserFocus(false)}
+                            onFocus={() => setPnameFocus(true)}
+                            onBlur={() => setPnameFocus(false)}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
-                        <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                        <p id="uidnote" className={pnameFocus && pname && !validPname ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             글자 수는 4-24 자 사이로 지정해주세요. <br />
                             문자로 시작해야 합니다.<br />
                             문자, 숫자, 기호는 -와 _ 만 허용됩니다.
                         </p>
-                        
-                        <div className="mb-4"></div>
-                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="email">
-                            * E-mail:
-                            <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            autoComplete="off"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            required
-                            aria-invalid={validEmail ? "false" : "true"}
-                            aria-describedby="emlnote"
-                            onFocus={() => setEmailFocus(true)}
-                            onBlur={() => setEmailFocus(false)}
-                            placeholder="abc@google.com"          
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
-                        <p id="emlnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            이메일 똑바로 쓰새오
-                        </p>
-
-                        <div className="mb-4"></div>
-                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="tel">
-                            * 휴대폰 번호 (Telephone):
-                            <FontAwesomeIcon icon={faCheck} className={validTel ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validTel || !tel ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="tel"
-                            id="tel"
-                            autoComplete="off"
-                            onChange={(e) => setTel(e.target.value)}
-                            value={tel}
-                            required
-                            aria-invalid={validTel ? "false" : "true"}
-                            aria-describedby="telnote"
-                            onFocus={() => setTelFocus(true)}
-                            onBlur={() => setTelFocus(false)}
-                            placeholder="000-000-000"
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
-                        <p id="telnote" className={telFocus && tel && !validTel ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            양식에 맞게 쓰새오
-                        </p>
-
-                        <div className="mb-4"></div>
-                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="password">
-                            * 비밀번호 (Password):
-                            <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                            aria-invalid={validPwd ? "false" : "true"}
-                            aria-describedby="pwdnote"
-                            onFocus={() => setPwdFocus(true)}
-                            onBlur={() => setPwdFocus(false)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
-                        {//<p className="text-red text-xs italic">Please choose a password.</p>    
-                        }
-                        <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            글자 수는 8-24 자 사이에서 지정해주세요.<br />
-                            소문자, 대문자, 숫자, 기호 전부 포함해야 합니다.<br />
-                            허용되는 기호 : <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> 
-                            <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
-
-                        <div className="mb-4"></div>
-                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="cpassword">
-                            * 비밀번호 확인 (Confirm Password):
-                            <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="confirm_pwd"
-                            onChange={(e) => setMatchPwd(e.target.value)}
-                            value={matchPwd}
-                            required
-                            aria-invalid={validMatch ? "false" : "true"}
-                            aria-describedby="confirmnote"
-                            onFocus={() => setMatchFocus(true)}
-                            onBlur={() => setMatchFocus(false)}
-
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
-
-                        <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            위에 입력한 비밀번호와 동일해야 합니다.
-                        </p>
 
                         <div className="mb-4"></div>  
                         <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="region">
-                            * 거주 지역 (Region):
+                            * 지역 (Region):
                         </label>
                         <ProductBar>
-                            <ProductSearch onChange={handleDropProduct} className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
+                            <ProductSearch onChange={handleDropReg} className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
                             {REG_LIST.map(el => {
                                 return (
                                 <option defaultValue="123" key={el.id}>
@@ -323,45 +230,62 @@ const ProjectCreate = () => {
                             
                             </ProductSearch>
                         </ProductBar>
-                        <ShowingCode>{selectedDropValue}</ShowingCode>
-                        
+                        <ShowingCode>{selectedDropReg}</ShowingCode>
+
                         <div className="mb-4"></div>
-                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="url">
-                            Github:
-                            <FontAwesomeIcon icon={faCheck} className={validGit ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validGit || !git ? "hide" : "invalid"} />
+                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="phc">
+                            * 모집 인원 (Head Count):
+                            <FontAwesomeIcon icon={faCheck} className={validPhc ? "valid" : "hide"} />
+                            <FontAwesomeIcon icon={faTimes} className={validPhc || !phc ? "hide" : "invalid"} />
                         </label>
                         <input
-                            type="url"
-                            id="git"
-                            autoComplete="off"
-                            onChange={(e) => setGit(e.target.value)}
-                            value={git}
-                            // required
-                            aria-invalid={validGit ? "false" : "true"}
-                            aria-describedby="gitnote"
-                            onFocus={() => setGitFocus(true)}
-                            onBlur={() => setGitFocus(false)}
-                            placeholder="https://.."
+                            type="phc"
+                            id="phc"
+                            onChange={(e) => setPhc(e.target.value)}
+                            value={phc}
+                            required
+                            aria-invalid={validPhc ? "false" : "true"}
+                            aria-describedby="phcnote"
+                            onFocus={() => setPhcFocus(true)}
+                            onBlur={() => setPhcFocus(false)}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
-                        <p id="gitnote" className={gitFocus && git && !validGit ? "instructions" : "offscreen"}>
+                        {//<p className="text-red text-xs italic">Please choose a password.</p>    
+                        }
+                        <p id="phcnote" className={phcFocus && !validPhc ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            깃헙내놔
+                            0-10 사이 숫자로 적어 주세요. 
                         </p>
+
+                        <div className="mb-4"></div>  
+                        <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="region">
+                            * 모집 분야 (Field):
+                        </label>
+                        <ProductBar>
+                            <ProductSearch onChange={handleDropField} className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
+                            {FIELD_LIST.map(el => {
+                                return (
+                                <option defaultValue="123" key={el.id}>
+                                    {el.value}
+                                </option>
+                                );
+                            })}
+                            
+                            </ProductSearch>
+                        </ProductBar>
+                        <ShowingCode>{selectedDropField}</ShowingCode>
                         
                         <div className="mb-6"></div>
                         <div className="flex items-center justify-between">
-                            <button disabled={!validName || !validPwd || !validMatch || !validEmail || !validTel ? true : false}
+                            <button disabled={!validPname || !validPhc ? true : false}
                             className="bg-indigo-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
-                                Sign Up
+                                Create Project
                             </button>
                             <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
-                            Already registered?
-                            <Link to="/"> Sign In</Link>
+                            
+                            <Link to="/"> Home </Link>
                             </a>
                         </div>
                     </form>
-
                 </section>
             )}
         </>
@@ -369,3 +293,5 @@ const ProjectCreate = () => {
 }
 
 export default ProjectCreate;
+
+//<button disabled={!validPname || !validPhc || !validPfield || !validPreg ? true : false}
