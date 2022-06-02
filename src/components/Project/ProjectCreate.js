@@ -63,7 +63,7 @@ const REG_LIST = [
     { id: 'R15', value: '제주도' },
 ];
 
-const PNAME_REGEX = /^[ㄱ-ㅎ|가-힣|A-z0-9-_]{3,23}$/;
+const PNAME_REGEX = /^[ㄱ-ㅎ|가-힣|A-z0-9-_]{4,23}$/;
 const PHC_REGEX = /^(?:[1-9]|0[1-9]|10)$/;
 
 const REGISTER_URL = '/api/project';
@@ -227,7 +227,6 @@ const ProjectCreate = () => {
                                 </option>
                                 );
                             })}
-                            
                             </ProductSearch>
                         </ProductBar>
                         <ShowingCode>{selectedDropReg}</ShowingCode>

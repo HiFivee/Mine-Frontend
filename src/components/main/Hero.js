@@ -4,11 +4,13 @@ export default function Hero() {
       <div className="sm:text-center lg:text-center">
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
         <span className="block text-indigo-600 mb-5">Mine </span>
-          <span className="block xl:inline">프로젝트를 함께 진행해보세요</span>
+          <span className="block xl:inline mb-2">프로젝트를</span>
+          <span className="block xl:inline"> 함께 진행해보세요</span>
           
         </h1>
         <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:text-center">
-          프로젝트를 해보고 싶은 학생 개발자들이 순쉽게 동료들을 보아 프로젝트를 진행할 수 있도록 도와주는 플랫폼
+          프로젝트를 해보고 싶은 학생 개발자들이 손쉽게 동료들을 모아 
+          <br/> 프로젝트를 진행할 수 있도록 도와주는 플랫폼
         </p>
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
           <div className="rounded-md shadow">
