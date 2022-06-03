@@ -11,7 +11,7 @@ const ProductBar = styled.form`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 40%;
+  width: 50%;
   height: 100%;
 `;
 
@@ -332,9 +332,9 @@ const AccountCreate = () => {
                         <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="region">
                             * 거주 지역 (Region):
                         </label>
+                    
                         <ProductBar>
                             <ProductSearch onChange={handleDropProduct} className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
-
                             {REG_LIST.map(el => {
                                 return (
                                 <option defaultValue="123" key={el.id}>
@@ -343,8 +343,8 @@ const AccountCreate = () => {
                                 );
                             })}                        
                             </ProductSearch>
+                            <ShowingCode>{selectedDropValue}</ShowingCode>
                         </ProductBar>
-                        <ShowingCode>{selectedDropValue}</ShowingCode>
                         
                         <div className="mb-4"></div>
                         <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="url">

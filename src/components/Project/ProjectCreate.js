@@ -11,7 +11,7 @@ const ProductBar = styled.form`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 40%;
+  width: 50%;
   height: 100%;
 `;
 
@@ -229,8 +229,8 @@ const ProjectCreate = () => {
                                 );
                             })}
                             </ProductSearch>
+                            <ShowingCode>{selectedDropReg}</ShowingCode>
                         </ProductBar>
-                        <ShowingCode>{selectedDropReg}</ShowingCode>
 
                         <div className="mb-4"></div>
                         <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="phc">
@@ -269,10 +269,9 @@ const ProjectCreate = () => {
                                 </option>
                                 );
                             })}
-                            
                             </ProductSearch>
+                            <ShowingCode>{selectedDropField}</ShowingCode>
                         </ProductBar>
-                        <ShowingCode>{selectedDropField}</ShowingCode>
                         
                         <div className="mb-6"></div>
                         <div className="flex items-center justify-between">
