@@ -30,7 +30,7 @@ const ShowingCode = styled.div`
 `;
 
 const FIELD_LIST = [
-    { id: null, value: '분야를 선택하세요.' },
+    { id: null, value: '분야 선택' },
     { id: 'F0', value: '프론트엔드' },
     { id: 'F1', value: '백엔드/서버' },
     { id: 'F2', value: '웹' },
