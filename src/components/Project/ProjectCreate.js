@@ -277,7 +277,7 @@ const ProjectCreate = () => {
                         <div className="flex items-center justify-between">
                             <button disabled={!validPname || !validPhc ? true : false}
                             className="bg-indigo-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
-                                Create Project
+                                프로젝트 생성
                             </button>
                             <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
                             

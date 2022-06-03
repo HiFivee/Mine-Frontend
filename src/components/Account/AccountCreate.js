@@ -374,11 +374,10 @@ const AccountCreate = () => {
                         <div className="flex items-center justify-between">
                             <button disabled={!validName || !validPwd || !validMatch || !validEmail || !validTel ? true : false}
                             className="bg-indigo-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
-                                Sign Up
+                                회원가입
                             </button>
-                            <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
-                            Already registered?
-                            <Link to="../login"> Sign In</Link>
+                            <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="../login">
+                                이미 계정이 있으신가요?
                             </a>
                         </div>
                     </form>

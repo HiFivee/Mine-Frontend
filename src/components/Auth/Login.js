@@ -112,7 +112,7 @@ const Login = () => {
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <div className="mb-4">
                 <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="username">
-                    E-mail : 
+                    E-mail
                 </label>
                 <input
                     type="email"
@@ -127,7 +127,7 @@ const Login = () => {
                 </div>
                 <div className="mb-6">
                 <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="password">
-                    Password : 
+                    Password
                 </label>
                 <input
                     type="password"
@@ -143,7 +143,7 @@ const Login = () => {
                 <button className="bg-indigo-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
                     로그인
                 </button>
-                <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
+                <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="../">
                     비밀번호를 잊으셨나요?
                 </a>
                 </div>
