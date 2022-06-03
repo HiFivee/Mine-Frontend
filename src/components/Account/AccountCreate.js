@@ -378,7 +378,7 @@ const AccountCreate = () => {
                             </button>
                             <a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
                             Already registered?
-                            <Link to="/"> Sign In</Link>
+                            <Link to="../login"> Sign In</Link>
                             </a>
                         </div>
                     </form>
