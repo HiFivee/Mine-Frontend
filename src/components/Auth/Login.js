@@ -112,7 +112,7 @@ const Login = () => {
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <div className="mb-4">
                 <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="username">
-                    E-mail
+                    E-mail : 
                 </label>
                 <input
                     type="email"
@@ -127,7 +127,7 @@ const Login = () => {
                 </div>
                 <div className="mb-6">
                 <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="password">
-                    Password
+                    Password : 
                 </label>
                 <input
                     type="password"
