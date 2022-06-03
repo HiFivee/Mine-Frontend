@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Login from '../auth/Login';
+import Login from '../Auth/Login';
 import Footer from '../fixed/Footer';
 import Header from '../fixed/Header';
 
