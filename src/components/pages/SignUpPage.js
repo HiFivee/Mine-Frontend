@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Footer from '../fixed/Footer';
 import Header from '../fixed/Header';
-import AccountCreate from '../Account/AccountCreate'
+import AccountCreate from '../account/AccountCreate'
 
 function SignUpPage() {
 

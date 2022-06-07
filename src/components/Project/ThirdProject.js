@@ -17,9 +17,9 @@ const ThirdProject = () => {
     axios.get(`/api/recruit`, 
               {withCredentials : false})
     .then((res) => {
-      setItems(prevState => [...prevState, res])
+      setItems(prevState => [...prevState, res.data.recruitList])
       
-      console.log(res);
+      console.log(res.data.recruitList);
     })
 
     setLoading(false);

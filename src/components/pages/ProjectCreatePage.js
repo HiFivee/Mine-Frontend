@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Footer from '../fixed/Footer';
 import Header from '../fixed/Header';
-import ProjectCreate from '../Project/ProjectCreate';
+import ProjectCreate from '../project/ProjectCreate';
 
 function ProjectCreatePage() {
 
