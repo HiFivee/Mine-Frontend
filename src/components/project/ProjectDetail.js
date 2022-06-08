@@ -34,6 +34,13 @@ const ProjectDetail = () => {
 
   return (
     <>
+      <div className="mb-10" />
+      <div className="sm:text-center lg:text-center">
+          <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+          <span className="block xl:inline mb-4">프로젝트 상세보기</span>
+          </h1>
+      </div>
+
       <div class="lg:w bg-white flex flex-wrap content-center items-center justify-center rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
         <p class="flex items-left justify-center">
             <img class="rounded-t-lg" src="https://avatars.githubusercontent.com/u/103104002?s=400&u=fe6790e6a567f81123b15f0effc05364cc4b19e8&v=4" alt="" />
