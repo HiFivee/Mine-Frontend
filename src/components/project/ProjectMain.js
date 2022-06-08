@@ -24,10 +24,12 @@ export default function ProjectMain() {
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
             이곳에서 프로젝트를 등록하고, 찾아보고, 지원하고, 시작하세요!
           </p>
+          <div class="p-3"/>
         </div>
+        
 
-        <div className="flex flex-wrap content-center items-center justify-content-center space-x-12" >
-          <div class="lg:w-1/3.5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex flex-wrap content-center items-center justify-evenly" >
+          <div class="lg:w-1/5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <p class="flex items-left justify-center">
               <img class="rounded-t-lg" src="https://avatars.githubusercontent.com/u/103104002?s=400&u=fe6790e6a567f81123b15f0effc05364cc4b19e8&v=4" alt="" />
             </p>
@@ -39,7 +41,7 @@ export default function ProjectMain() {
             </div>
           </div>
 
-          <div class="lg:w-1/3.5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
+          <div class="lg:w-1/5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
             <p class="flex items-left justify-center">
               <img class="rounded-t-lg" src="https://avatars.githubusercontent.com/u/103104002?s=400&u=fe6790e6a567f81123b15f0effc05364cc4b19e8&v=4" alt="" />
             </p>
@@ -51,7 +53,7 @@ export default function ProjectMain() {
             </div>
           </div>
 
-          <div class="lg:w-1/3.5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
+          <div class="lg:w-1/5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
             <p class="flex items-left justify-center">
               <img class="rounded-t-lg" src="https://avatars.githubusercontent.com/u/103104002?s=400&u=fe6790e6a567f81123b15f0effc05364cc4b19e8&v=4" alt="" />
             </p>
@@ -62,6 +64,19 @@ export default function ProjectMain() {
               </Link>
             </div>
           </div>
+
+          <div class="lg:w-1/5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-3">
+            <p class="flex items-left justify-center">
+              <img class="rounded-t-lg" src="https://avatars.githubusercontent.com/u/103104002?s=400&u=fe6790e6a567f81123b15f0effc05364cc4b19e8&v=4" alt="" />
+            </p>
+            <div class="p-5">
+              <Link to="/community"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                  커뮤니티
+              </Link>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
