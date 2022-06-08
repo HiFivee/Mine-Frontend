@@ -12,12 +12,12 @@ function MainPage() {
 
     return (
       <div className="flex flex-col h-screen justify-between">
-        <Header className="h-10"></Header>
+        <Header className="h-10" />
         <div className="mb-auto h-auto">
-          <Hero></Hero>
-          <Features></Features>
+          <Hero />
+          <Features />
         </div>
-        <Footer className="h-10"></Footer>
+        <Footer className="h-10" />
       </div>
     );
   }

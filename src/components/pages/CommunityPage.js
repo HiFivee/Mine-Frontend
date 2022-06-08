@@ -10,9 +10,9 @@ function CommunityPage() {
 
     return (
       <div className="flex flex-col h-screen justify-between">
-        <Header className="h-10"></Header>
-        <div className="mb-auto h-10"></div>
-        <Footer className="h-10"></Footer>
+        <Header className="h-10" />
+        <div className="mb-auto h-10" />
+        <Footer className="h-10" />
       </div>
     );
   }

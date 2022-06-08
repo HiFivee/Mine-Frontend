@@ -11,9 +11,9 @@ function DashboardPage() {
 
     return (
       <div className="flex flex-col h-screen justify-between">
-        <Header className="h-10"></Header>
-        <AccountFetch></AccountFetch>
-        <Footer className="h-10"></Footer>
+        <Header className="h-10" />
+        <AccountFetch />
+        <Footer className="h-10" />
       </div>
     );
   }

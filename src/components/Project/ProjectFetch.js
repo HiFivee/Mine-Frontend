@@ -54,6 +54,7 @@ const ProjectFetch = () => {
       console.log(JSON.stringify(response?.data));
       setItemLists(response?.data.recruitList);
       setIsLoaded(true);
+
     } catch (err) {
         if (!err?.response) { 
             setErrMsg('서버 응답 없음. No Server Response');
@@ -62,23 +63,12 @@ const ProjectFetch = () => {
         } else {
             setErrMsg('프로젝트 생성 실패. Failed')
         }
-        //errRef.current.focus();
     }
   }
-
-
-  const getMoreItem = async () => {
-    setIsLoaded(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 리크루트 단위 배열 
-    setItemLists((itemLists) => itemLists.concat(Items));
-    setIsLoaded(false);
-  };
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
-      //await getMoreItem();
       await getItems();
       observer.observe(entry.target);
     }
@@ -88,12 +78,12 @@ const ProjectFetch = () => {
     let observer;
     if (target) {
       observer = new IntersectionObserver(onIntersect, {
-        threshold: 0.4,
+        threshold: 0.6,
       });
       observer.observe(target);
     }
     return () => observer && observer.disconnect();
-  }, [target  ]);
+  }, [target]);
 
   return (
     <>

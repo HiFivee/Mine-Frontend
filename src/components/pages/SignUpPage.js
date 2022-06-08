@@ -11,9 +11,9 @@ function SignUpPage() {
 
     return (
       <div className="flex flex-col h-screen justify-between">
-        <Header className="h-10"></Header>
-        <AccountCreate className="mb-auto h-10"></AccountCreate>
-        <Footer className="h-10"></Footer>
+        <Header className="h-10" />
+        <AccountCreate className="mb-auto h-10" />
+        <Footer className="h-10" />
       </div>
     );
   }
