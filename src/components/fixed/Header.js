@@ -42,10 +42,17 @@ function Header()
                     </div>
                     <div>
                         { getCookie('token') !== undefined ? 
-                            <Link to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Test 님</Link> :
+                            <Link to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+                                Test 님
+                            </Link> :
                             <>
-                                <Link to="/signUp" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">회원가입</Link>
-                                <Link to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">로그인</Link>
+                                <Link to="/signUp" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+                                    회원가입
+                                </Link>
+                                <Link to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+                                    로그인
+                                </Link>
+                                
                             </>
                         }
                     </div>
@@ -56,6 +63,9 @@ function Header()
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
+            </button>
+            <button className='inline-block text-sm px-4 py-2 leading-none border rounded text-white border-gray hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0'>
+                💎
             </button>
             </div>
         </div>
