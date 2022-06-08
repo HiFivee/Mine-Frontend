@@ -21,7 +21,7 @@ function CommunityPage() {
             </div>
             <div className="flex-inital w-1/2 sm:text-center lg:text-center mt-10 mb-10">
                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-2xl md:text-3xl">
-                  <span className="text-center block xl:inline mb-5">본인과 어울리는 커뮤니티</span>
+                  <span className="text-center block xl:inline mb-5">추천 커뮤니티</span>
                 </h1>
                 <Community />
             </div>
