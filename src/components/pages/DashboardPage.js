@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import AccountFetch from '../Account/AccountFetch';
+import AccountFetch from '../account/AccountFetch';
 import Footer from '../fixed/Footer';
 import Header from '../fixed/Header';
 

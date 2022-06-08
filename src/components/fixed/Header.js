@@ -25,7 +25,7 @@ function Header()
                 <Link to="/dashboard" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4">
                     대시보드
                 </Link>
-                <Link to="/project/create" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4">
+                <Link to="/project/recruit" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4">
                     프로젝트 찾기
                 </Link>
                 <Link to="/community" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white">
