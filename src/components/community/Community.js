@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import axios from "../../utils/api/axios";
 import styled, { createGlobalStyle } from "styled-components";
-import Item from "../../utils/scrollComponents/Items";
+import CommunityItem from "./CommunityItems";
 import Loader from "../../utils/scrollComponents/Loader";
 
 const GlobalStyle = createGlobalStyle`
@@ -90,7 +90,7 @@ const ProjectFetch = () => {
       <GlobalStyle />
       <AppWrap>
         {itemLists.map((item, i) => {
-          return <Item item={item} key={i} />;
+          return <CommunityItem item={item} key={i} />;
         })}
         <div ref={setTarget} className="Target-Element">
           {isLoaded && <Loader />}

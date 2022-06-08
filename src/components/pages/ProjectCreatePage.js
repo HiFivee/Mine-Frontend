@@ -11,9 +11,9 @@ function ProjectCreatePage() {
 
     return (
       <div className="flex flex-col h-screen justify-between">
-        <Header className="h-10"></Header>
-        <ProjectCreate className="mb-auto h-10"></ProjectCreate>
-        <Footer className="h-10"></Footer>
+        <Header className="h-10" />
+        <ProjectCreate className="mb-auto h-10" />
+        <Footer className="h-10" />
       </div>
     );
   }
