@@ -85,7 +85,8 @@ const Login = () => {
             setPwd('');
 
             //navigate( from, { replace: true });
-            navigate("/");
+            // 로그인 성공하면 대시보드 페이지로 이동
+            navigate("/dashboard");
 
         } catch (err) {
             if (!err?.response) {
